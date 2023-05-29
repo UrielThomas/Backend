@@ -1,0 +1,25 @@
+{
+  "name": "final-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.0-alpha3",
+    "expres": "^0.0.5",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.7",
+    "mongoose": "^7.2.0",
+    "mongoose-paginate": "^5.0.3",
+    "mongoose-paginate-v2": "^1.7.1",
+    "socket.io": "^4.6.1",
+    "v2": "^0.0.3"
+  }
+}

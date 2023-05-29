@@ -1,0 +1,10 @@
+<div class="position-absolute top-50 start-50 translate-middle">
+    <div class= "card" style="width: 18rem;" >
+        <img class="card-img-top" src="{{indexedDetailedProduct.image}}" alt="" >
+        <h2 class="card-title">{{indexedDetailedProduct.title}}</h2>
+        <p class="card-text">{{indexedDetailedProduct.description}}</p>
+        <p class="card-text">{{indexedDetailedProduct.category}}</p>
+        <a href="http://localhost:8080/api/cart?name={{indexedDetailedProduct.title}}" class="btn btn-primary">Go to cart</a>
+    </div>
+
+    <a href="http://localhost:8080/api/products" class="btn btn-secondary btn-lg">Go back to catalog</a>
