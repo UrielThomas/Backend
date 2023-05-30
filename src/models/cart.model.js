@@ -6,12 +6,25 @@ const cartCollection = 'cart'
 
 const cartSchema = mongoose.Schema({
 
-    id: Number,
-    title: String,
+    id: 
+    {
+        type:Number,
+        index:true
+    },
     price: Number,
-    description: String,
-    category: String,
-    image: String
+    products:{
+        type:[
+            {
+                product:{
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref:'products'
+                }
+            }
+        ],
+        default:[]
+    }
+    
+    
 })
 
 cartSchema.plugin(mongoosePaginate)

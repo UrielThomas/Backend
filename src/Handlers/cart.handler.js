@@ -14,19 +14,10 @@ class cartHandler {
 
     addProduct = async(name)=>{
 
-        const toFind = await productModel.find({title:name}).lean().exec()
-        const indexedFound = toFind[0]
-        console.log(indexedFound)
+        const toFind = await productModel.findOne({title:name}).lean().exec()
         
-
-        const addOne = await cartModel.insertOne({
-
-            title : indexedFound.title,
-            price : indexedFound.price,
-            description: indexedFound.description,
-            category: indexedFound.category,
-            image:indexedFound.image
-        })
+        return toFind
+        
         
 
     }

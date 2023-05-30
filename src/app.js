@@ -7,6 +7,7 @@ import productRouter from "./routers/product.router.js"
 import productDetailRouter from './routers/product.detail.router.js'
 import cartRouter from './routers/cart.router.js'
 
+
 const uri = 'mongodb+srv://Uriel:elviejo1@projectbackend.yrbfvk1.mongodb.net/final_project'
 const app = express()
 const port = 8080;
