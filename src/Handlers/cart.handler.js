@@ -12,7 +12,7 @@ class cartHandler {
     }
 
 
-    addProduct = async(name)=>{
+    findProduct = async(name)=>{
 
         const toFind = await productModel.findOne({title:name}).lean().exec()
         

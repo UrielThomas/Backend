@@ -6,6 +6,11 @@ import {Server} from 'socket.io'
 import productRouter from "./routers/product.router.js"
 import productDetailRouter from './routers/product.detail.router.js'
 import cartRouter from './routers/cart.router.js'
+import loginRouter from './routers/login.router.js'
+import session from 'express-session'
+import  FileStore  from 'session-file-store'
+import MongoStore from 'connect-mongo'
+import registerRouter from './routers/register.router.js'
 
 
 const uri = 'mongodb+srv://Uriel:elviejo1@projectbackend.yrbfvk1.mongodb.net/final_project'
@@ -16,18 +21,42 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
 
+const fileStore = FileStore(session)
+app.use(session({
+    store: MongoStore.create({
+        mongoUrl: uri ,
+        dbName: 'sessions',
+        mongoOptions:{
+            useNewUrlParser: true,
+            useUnifiedTopology:true
+        },
+        ttl:120,
+    }),
+    secret: 'coder',
+    resave:true,
+    saveUninitialized: true
+}))
+
+
+
+
+
+
 app.engine('handlebars',handlebars.engine())
 app.set('views',__dirname +'/views')
 app.set('view engine','handlebars')
 
 app.use(express.static(__dirname+'/public'))
 
+
+
+app.use('/api',loginRouter)
 app.use('/api/products',productRouter)
 app.use('/api/productDetail',productDetailRouter)
 app.use('/api/cart',cartRouter)
+app.use('/register',registerRouter)
+app.use('/',loginRouter)
 
-
-app.get('/',(req,res)=>res.send('on'))
 
 
 mongoose.set('strictQuery',false)

@@ -10,7 +10,7 @@ const router = Router()
 
 router.get('/',async(req,res)=>{
 const name = req.query.name
-const found = await cart_handler.addProduct(name)
+const found = await cart_handler.findProduct(name)
 const prodId= found._id
 const cart = await cartModel.findOne({_id:'6476491d0cb499599ca76386'})
 console.log(prodId)
