@@ -11,7 +11,8 @@ import session from 'express-session'
 import  FileStore  from 'session-file-store'
 import MongoStore from 'connect-mongo'
 import registerRouter from './routers/register.router.js'
-
+import passport from "passport";
+import initializePassport from "./config/passport.config.js";
 
 const uri = 'mongodb+srv://Uriel:elviejo1@projectbackend.yrbfvk1.mongodb.net/final_project'
 const app = express()
@@ -37,7 +38,9 @@ app.use(session({
     saveUninitialized: true
 }))
 
-
+initializePassport()
+app.use(passport.initialize())
+app.use(passport.session())
 
 
 
