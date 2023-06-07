@@ -12,35 +12,15 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', 
-passport.authenticate('register',{failureRedirect:'/errors/failureRegister'}),
+passport.authenticate('register',{failureRedirect:'/failureRegister'}),
 async (req, res) => {
-    let userName
-    const password = req.body.password
-    const email = req.body.email
-    let auth
-    if (email === 'adminCoder@coder.com' && password === 'adminCod3r123') {
-        userName = 'CoderAdmin'
-        auth = true
-    } else {
-        auth = false
-        userName = req.body.user
-    }
-    req.session.user = userName
-    req.session.password = password
-    req.session.email = email
-    req.session.auth = auth
-    // console.log(req.session)
-    req.body.auth = auth
-    req.body.password=createHash(req.body.password)         //HASHING THE PASSWORD
-    // console.log(req.body.password)
-    const newUser = req.body
-    const user = new userModel(newUser)
-    await user.save()
     res.redirect('/')
-    console.log(newUser)
+
+})
 
 
-
+router.get('/failureRegister',async(req,res)=>{
+    res.send({error:"failed to register"})
 })
 
 export default router
